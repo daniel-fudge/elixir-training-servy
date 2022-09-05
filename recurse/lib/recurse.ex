@@ -16,8 +16,23 @@ defmodule Recurse do
 
   def triple([]), do: []
 
+  def my_map([head | tail], f) do
+    my_map(tail, [f.(head)], f)
+  end
+
+  def my_map([head | tail], new_list, f) do
+    my_map(tail, [f.(head)] ++ new_list, f)
+  end
+
+  def my_map([], new_list, _f) do
+    Enum.reverse(new_list)
+  end
+
 end
 
-# Recurse.sum([1, 2, 3, 4, 5])
+nums = [1, 2, 3, 4, 5]
 
-IO.inspect Recurse.triple([1, 2, 3, 4, 5])
+# Recurse.sum(nums)
+# IO.inspect Recurse.triple(nums)
+# IO.inspect Enum.map(nums, &(&1 * 3))
+IO.inspect Recurse.my_map(nums, &(&1 * 3))
