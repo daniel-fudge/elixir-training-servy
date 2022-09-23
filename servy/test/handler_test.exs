@@ -131,9 +131,9 @@ defmodule HandlerTest do
     """
   end
 
-  test "GET /about" do
+  test "GET /pages/about.html" do
     request = """
-    GET /about HTTP/1.1\r
+    GET /pages/about.html HTTP/1.1\r
     Host: example.com\r
     User-Agent: ExampleBrowser/1.0\r
     Accept: */*\r
@@ -157,6 +157,42 @@ defmodule HandlerTest do
     the whole universe appears as an infinite storm of beauty.
     -- John Muir
     </blockquote>
+    🎉🎉🎉🎉🎉
+    """
+
+    assert remove_whitespace(response) == remove_whitespace(expected_response)
+  end
+
+  test "GET /pages/faq.md" do
+    request = """
+    GET /pages/faq.md HTTP/1.1\r
+    Host: example.com\r
+    User-Agent: ExampleBrowser/1.0\r
+    Accept: */*\r
+    \r
+    """
+
+    response = handle(request)
+
+    expected_response = """
+    HTTP/1.1 200 OK\r
+    Content-Type: text/html\r
+    Content-Length: 696\r
+    \r
+    🎉🎉🎉🎉🎉\r
+    <h1>Frequently Asked Questions</h1>
+
+    <ul><li><p><strong>Have you really seen Bigfoot?</strong></p><p>
+    Yes! In this <ahref=\"https://www.youtube.com/watch?v=v77ijOO8oAk\"> totally believable video</a>!</p></li>
+
+    <li><p><strong>No, I mean seen Bigfoot <em> on the refuge </em>?</strong></p>
+    <p>Oh! Not yet, but we’re <em> still looking </em>…</p></li>
+
+    <li><p><strong>Can you just show me some code?</strong></p>
+
+    <p>Sure! Here’s some Elixir:</p>
+
+    <pre><codeclass=\"elixir\">[&quot;Bigfoot&quot;, &quot;Yeti&quot;, &quot;Sasquatch&quot;] |&gt; Enum.random()</code></pre></li></ul>
     🎉🎉🎉🎉🎉
     """
 

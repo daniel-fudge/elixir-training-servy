@@ -3,22 +3,14 @@ defmodule Servy.Wildthings do
 
   @db_path Path.expand("../../db", __DIR__)
 
+  import Servy.FileHandler, only: [read_file: 1]
+
   def list_bears() do
     @db_path
     |> Path.join("bears.json")
-    |> read_json
+    |> read_file
     |> Poison.decode!(as: %{"bears" => [%Bear{}]})
     |> Map.get("bears")
-  end
-
-  defp read_json(source) do
-    case File.read(source) do
-      {:ok, contents} ->
-        contents
-      {:error, reason} ->
-        IO.inspect "Error reading #{source}: #{reason}"
-        "[]"
-    end
   end
 
   def get_bear(id) when is_integer(id) do
