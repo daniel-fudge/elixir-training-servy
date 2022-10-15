@@ -3,6 +3,11 @@ This is a simple Elixir/OTP project developed while taking the [Developing With 
 
 I highly recommend taking the [course](https://pragmaticstudio.com/elixir) if you are interested in learning Elixir/OTP. There is also a free trial period to get started.
 
+## General Notes
+#### OTP = Open Telecom Platform
+20+ year old name that has stuck, even though OTP applies well beyond telecom. Now bases of the [OTP Design Principles](https://www.erlang.org/doc/design_principles/des_princ.html) 
+implemented in Erlang.
+
 ## Useful Commands
 
 ### External Commands
@@ -28,3 +33,7 @@ I highly recommend taking the [course](https://pragmaticstudio.com/elixir) if yo
 `r Servy.Handler`
 #### Recompile full project: 
 `recompile()`
+
+## References
+Erlang Docs - https://www.erlang.org/docs    
+OTP Design Principles - https://www.erlang.org/doc/design_principles/des_princ.html    

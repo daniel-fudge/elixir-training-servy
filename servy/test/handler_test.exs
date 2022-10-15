@@ -15,14 +15,14 @@ defmodule HandlerTest do
     response = handle(request)
 
     assert response == """
-    HTTP/1.1 200 OK\r
-    Content-Type: text/html\r
-    Content-Length: 64\r
-    \r
-    🎉🎉🎉🎉🎉\r
-    Bears, Lions, Tigers\r
-    🎉🎉🎉🎉🎉
-    """
+           HTTP/1.1 200 OK\r
+           Content-Type: text/html\r
+           Content-Length: 64\r
+           \r
+           🎉🎉🎉🎉🎉\r
+           Bears, Lions, Tigers\r
+           🎉🎉🎉🎉🎉
+           """
   end
 
   test "GET /bears" do
@@ -74,12 +74,12 @@ defmodule HandlerTest do
     response = handle(request)
 
     assert response == """
-    HTTP/1.1 404 Not Found\r
-    Content-Type: text/html\r
-    Content-Length: 17\r
-    \r
-    No /bigfoot here!
-    """
+           HTTP/1.1 404 Not Found\r
+           Content-Type: text/html\r
+           Content-Length: 17\r
+           \r
+           No /bigfoot here!
+           """
   end
 
   test "GET /bears/1" do
@@ -121,14 +121,14 @@ defmodule HandlerTest do
     response = handle(request)
 
     assert response == """
-    HTTP/1.1 200 OK\r
-    Content-Type: text/html\r
-    Content-Length: 64\r
-    \r
-    🎉🎉🎉🎉🎉\r
-    Bears, Lions, Tigers\r
-    🎉🎉🎉🎉🎉
-    """
+           HTTP/1.1 200 OK\r
+           Content-Type: text/html\r
+           Content-Length: 64\r
+           \r
+           🎉🎉🎉🎉🎉\r
+           Bears, Lions, Tigers\r
+           🎉🎉🎉🎉🎉
+           """
   end
 
   test "GET /pages/about.html" do
@@ -214,12 +214,12 @@ defmodule HandlerTest do
     response = handle(request)
 
     assert response == """
-    HTTP/1.1 201 Created\r
-    Content-Type: text/html\r
-    Content-Length: 33\r
-    \r
-    Created a Brown bear named Baloo!
-    """
+           HTTP/1.1 201 Created\r
+           Content-Type: text/html\r
+           Content-Length: 33\r
+           \r
+           Created a Brown bear named Baloo!
+           """
   end
 
   test "DELETE /bears/1" do
@@ -234,12 +234,12 @@ defmodule HandlerTest do
     response = handle(request)
 
     assert response == """
-    HTTP/1.1 403 Forbidden\r
-    Content-Type: text/html\r
-    Content-Length: 28\r
-    \r
-    Bears must never be deleted!
-    """
+           HTTP/1.1 403 Forbidden\r
+           Content-Type: text/html\r
+           Content-Length: 28\r
+           \r
+           Bears must never be deleted!
+           """
   end
 
   test "GET /api/bears" do
@@ -290,12 +290,12 @@ defmodule HandlerTest do
     response = handle(request)
 
     assert response == """
-    HTTP/1.1 201 Created\r
-    Content-Type: text/html\r
-    Content-Length: 35\r
-    \r
-    Created a Polar bear named Breezly!
-    """
+           HTTP/1.1 201 Created\r
+           Content-Type: text/html\r
+           Content-Length: 35\r
+           \r
+           Created a Polar bear named Breezly!
+           """
   end
 
   defp remove_whitespace(text) do

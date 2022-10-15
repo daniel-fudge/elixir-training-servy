@@ -1,5 +1,4 @@
 defmodule Servy.Parser do
-
   alias Servy.Conv
 
   def parse(request) do
@@ -14,28 +13,27 @@ defmodule Servy.Parser do
     params = parse_params(headers["Content-Type"], params_string)
 
     %Conv{
-       method: method,
-       path: path,
-       params: params,
-       headers: headers
-     }
+      method: method,
+      path: path,
+      params: params,
+      headers: headers
+    }
   end
 
   def parse_headers(header_lines) do
-    Enum.reduce(header_lines, %{}, fn(x, acc) ->
+    Enum.reduce(header_lines, %{}, fn x, acc ->
       [key, value] = String.split(x, ": ")
       Map.put(acc, key, value)
     end)
   end
 
   def parse_params("application/x-www-form-urlencoded", params_string) do
-    params_string |> String.trim |> URI.decode_query
+    params_string |> String.trim() |> URI.decode_query()
   end
 
   def parse_params("application/json", params_string) do
-    params_string |> String.trim |> Poison.Parser.parse!(%{})
+    params_string |> String.trim() |> Poison.Parser.parse!(%{})
   end
 
   def parse_params(_, _), do: %{}
-
 end
